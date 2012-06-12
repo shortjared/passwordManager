@@ -1,5 +1,6 @@
 create table passwords (
 	id integer primary key,
+	password_service char(200) not null,
 	password_text char(200) not null
 );
 
