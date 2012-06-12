@@ -45,6 +45,6 @@ if ($error) {
 
 echo '<p>Done.</p>';
 
-$this->mark_installed ('passwordManager', $appconf['Admin']['version']);
+$this->mark_installed ('form', $appconf['Admin']['version']);
 
 ?>
