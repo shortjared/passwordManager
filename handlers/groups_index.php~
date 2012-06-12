@@ -1,6 +1,0 @@
-<?php
-
-$page->title = 'Groups home';
-echo $tpl->render ('groups/index', array ());
-
-?>

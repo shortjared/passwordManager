@@ -1,9 +1,0 @@
-<?php
-
-namespace group_users;
-
-class Group_user extends \Model {
-	public $table = 'group_users';
-}
-
-?>
