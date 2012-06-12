@@ -1,0 +1,20 @@
+<?php
+$this->require_admin ();
+$page->layout = false;
+/*
+$groupuser = new passwordManager\Group_user;
+$groupuser->query->()->where('group_id',$_GET['group_id'])->where('user_id',$_GET['user_id']);
+
+$groupuser->remove();
+
+if ($groupuser->error) {
+	$this->add_notification (i18n_get ('Unable to remove user.'));
+	$this->redirect ('/passwordManager/groups_admin');
+}
+
+$this->add_notification (i18n_get ('User removed.'));
+$this->redirect ('/passwordManager/groups_admin');
+*/
+
+echo "test";
+?>

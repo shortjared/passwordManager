@@ -1,0 +1,38 @@
+<script type="text/javascript" src="/apps/passwordManager/js/jquery.autocomplete-min.js"></script>
+<link rel="stylesheet" href="/apps/passwordManager/js/styles.css" />
+<script type="text/javascript">
+$('#add_user_form').submit (function (e) {
+    e.preventDefault ();
+
+    $.post ('/passwordManager/groups_add_user', $("#add_user_form").serialize(), function (res) {
+	$('#userlist').append('<li>'+$("#user_name").val()+'<a class="group_user_delete" href="groups_user_delete?group_id='+$("#group_id").val()+'&user_id='+$("#user_id").val()+'">X</a></li>');
+        $.close_dialog ();
+        //$.add_notification (res);
+    });
+});
+
+	$('#user_name').autocomplete({
+		serviceUrl:'/passwordManager/user_listing',
+		minChars: 1,//search after one characters
+		onSelect: function(value,data){
+   			$('#user_id').val(data[0]);
+	       	},
+		width:150,
+	});
+
+</script>
+
+
+<form method="post" id="add_user_form">
+
+<p>
+	{"User Name"}:<br />
+	<input type="text" id="user_name" name="user_name" value="{{ user_name|quotes }}" />
+	<input type="hidden" id="user_id" name="user_id" value="{{ user_id|quotes }}" />
+	<input type="hidden" id="add_user_form_group_id" name="group_id" value="{{ group_id|quotes }}" />
+	<span class="notice" id="user_name-notice">{"Please enter a user name."}</span>
+</p>
+
+<p><input type="submit" value="{"Add User"}" /></p>
+
+</form>

@@ -1,0 +1,61 @@
+{! admin/util/modal !}
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#addUser").click(function() {
+		  $.get ('/passwordManager/groups_add_user', function (res) {
+			    $.open_dialog ('Add User', res);
+			    $("#add_user_form_group_id").val($("#group_id").val());
+			});
+	});
+});
+</script>
+
+<style>
+#userlist{
+	list-style:none;
+	margin:0;
+	width:250px;
+	margin-top:30px;
+}
+
+#userlist li{
+	margin:0;
+	border-bottom:1px solid #ddd;
+	padding:5px;
+}
+
+#userlist li:hover{
+	background:#ddc;
+}
+
+.group_user_delete{
+	float:right;
+	text-decoration:none;
+}
+</style>
+
+<div>
+<form method="post" id="{{ _form }}">
+
+<p>
+	{"Group Name"}:<br />
+	<input type="text" name="group_name" value="{{ group_name|quotes }}" />
+	<span class="notice" id="group_name-notice">{"Please enter a group name."}</span>
+	<input type="submit" value="{"Save Group"}" />
+</p>
+
+
+</form>
+<input id="group_id" type="hidden" value="{{  id }}" />
+</div>
+
+<a href="#" id="addUser" class="buttonlink">Add User</a>
+<div>
+<ul id="userlist">
+	{% foreach users %}
+	<li>{{ loop_value->name }} <a class="group_user_delete" href="groups_user_delete?group_id={{ id }}&user_id={{ loop_value->id}}">X</a></li>
+	{% end %}
+</ul>
+</div>

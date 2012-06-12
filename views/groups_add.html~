@@ -1,0 +1,11 @@
+<form method="post" id="{{ _form }}">
+
+<p>
+	{"Group_name"}:<br />
+	<input type="text" name="group_name" value="{{ group_name|quotes }}" />
+	<span class="notice" id="group_name-notice">{"Please enter a group name."}</span>
+</p>
+
+<p><input type="submit" value="{"Add Group"}" /></p>
+
+</form>
